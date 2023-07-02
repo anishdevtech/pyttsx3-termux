@@ -171,10 +171,10 @@ class EspeakDriver(object):
                     f.setframerate(22050.0)
                     f.writeframes(self._data_buffer)
 
-                if event.user_data:
+            #    if event.user_data:
                     os.system('ffmpeg -y -i {} {} -loglevel quiet'.format(stream.name, self.decode_numeric(event.user_data)))
-                else:
-                    os.system('aplay {} -q'.format(stream.name))  # -q for quiet
+            #    else:
+                  #  os.system('aplay {} -q'.format(stream.name))  # -q for quiet
 
                 self._data_buffer = b''
                 self._proxy.notify('finished-utterance', completed=True)
